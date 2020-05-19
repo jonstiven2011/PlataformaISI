@@ -47,6 +47,10 @@
                     <th>Dirección:</th>
                     <td>{{ $user->address}}</td>
                 </tr>
+                <tr>
+                    <th>Rol:</th>
+                    <td>{{ $user->role}}</td>
+                </tr>
             </table>
         
         </div>

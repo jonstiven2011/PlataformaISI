@@ -63,7 +63,7 @@
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    <img src="{{asset(Auth::user()->photo)}}" class="rounded-circle" width="50px">
+                                    <img src="{{asset(Auth::user()->photo)}}" class="rounded-circle" width="50px" height="45px">
                                     {{ Auth::user()->fullname }} <span class="caret"></span>
                                 </a>
 
@@ -77,12 +77,12 @@
                                             Mis Usuarios
                                         </a>
                                         {{-- Boton De Categorias --}}
-                                        <a href="{{url('categories')}}" class="dropdown-item">
+                                        <a href="{{url('cursos')}}" class="dropdown-item">
                                             <i class="fa fa-list"></i>
                                             Mis Cursos
                                         </a>
                                         {{-- Boton De Articulos --}}
-                                        <a href="{{url('articles')}}" class="dropdown-item">
+                                        <a href="{{url('clases')}}" class="dropdown-item">
                                             <i class="fa fa-newspaper"></i>
                                             Mis Clases
                                         </a>
@@ -98,11 +98,11 @@
                                         {{-- Divide los item --}}
                                         <div class="dropdown-divider"></div>
                                         {{--  --}}
-                                        <a href="{{ url('mydata') }}" class="dropdown-item">
+                                        <a href="{{ url('mycurso') }}" class="dropdown-item">
                                             <i class="fa fa-user"></i>
                                             Mis Cursos
                                         </a>
-                                        <a href="{{ url('myarticles') }}" class="dropdown-item">
+                                        <a href="{{ url('editor') }}" class="dropdown-item">
                                             <i class="fa fa-newspaper"></i>
                                             Mis Clases
                                         </a>

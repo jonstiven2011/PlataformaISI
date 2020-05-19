@@ -117,12 +117,15 @@
                         </span>
                     @enderror
                 </div>
-                {{-- Contraseña --}}
+                {{-- Rol --}}
                 <div class="form-group">
                     <label for="role" class="text-md-right">Rol:</label>
 
-                    <input id="role" type="role" class="form-control @error('role') is-invalid @enderror" name="role"  autocomplete="current-role">
-
+                    <select name="role" id="role" class="form-control @error('role') is-invalid @enderror">
+                        <option value="">Seleccione...</option>
+                        <option value="admin" @if (old('role') == 'admin') selected @endif>Admin</option>
+                        <option value="editor" @if (old('role') == 'editor') selected @endif>Editor</option>
+                    </select>
                     @error('role')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>

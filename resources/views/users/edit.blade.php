@@ -70,8 +70,6 @@
                         </span>
                     @enderror
                 </div>
-{{-- El old lo que hace es recordar el nombre del campo --}}
-       
                 {{-- Direccion--}}
                 <div class="form-group">
                     <label for="address" class="text-md-right">Dirección</label>
@@ -79,6 +77,21 @@
                     <input id="address" type="texto" class="form-control @error('address') is-invalid @enderror" name="address" value="{{ old('address',$user->address) }}"  autocomplete="address">
 
                     @error('address')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
+                {{-- Rol --}}
+                <div class="form-group">
+                    <label for="role" class="text-md-right">Rol:</label>
+
+                    <select name="role" id="role" class="form-control @error('role') is-invalid @enderror">
+                        <option value="">Seleccione...</option>
+                        <option value="admin" @if (old('role',$user->role) == 'admin') selected @endif>Admin</option>
+                        <option value="editor" @if (old('role',$user->role) == 'editor') selected @endif>Editor</option>
+                    </select>
+                    @error('role')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
