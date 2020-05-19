@@ -7,30 +7,36 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
         {{-- Boton adicionar usuario --}}
-                <a href="{{url('clases/create')}}" class="btn btn-success">
-                    <i class="fa fa-plus"></i>
-                    Adicionar Clase
-                </a>
-                <a href="{{ url('generate/pdf/clases') }}" class="btn btn-indigo">
-                    <i class="fa fa-file-pdf"></i> 
-                    Generar Reporte PDF
-                </a>
-                <a href="{{ url('generate/excel/clases') }}" class="btn btn-indigo">
-                    <i class="fa fa-file-excel"></i> 
-                    Generar Reporte EXCEL
-                </a>
-                <br><br>
+            <a href="{{url('clases/create')}}" class="btn btn-success">
+                <i class="fa fa-plus"></i>
+                Adicionar Clase
+            </a>
+            <a href="{{url('videos')}}" class="btn btn-info">
+                <i class="fa fa-video"></i>
+                Vídeos
+            </a>
+            <a href="{{ url('generate/pdf/clases') }}" class="btn btn-indigo">
+                <i class="fa fa-file-pdf"></i> 
+                Generar Reporte PDF
+            </a>
+                {{-- Menu Migajas de pan --}}
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{ url('home') }}">Inicio</a></li>
+                <li class="breadcrumb-item"><a href="{{ url('cursos') }}">Lista de Cursos</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Lista de Clases</li>
+                </ol>
+            </nav>
          {{-- Tabla --}}
-            <table class="table table-inverse table-striped table-bordered">
+            <table class="table table-inverse table-striped table-bordered table-responsive">
                 <thead>
                     <tr>
                         <th>Clase</th>
                         <th>Descripción</th>
-                        <th>Instrucciones</th>
-                        <th>Video</th>
-                        <th>Presentaciones</th>
-                        <th>Prezi</th>
-                        <th>Formularios</th>
+                        <th>Instrucciones PDF</th>
+                        <th>Presentación PDF</th>
+                        <th>Presentaciones Drive</th>
+                        <th>Link Formularios</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
@@ -39,33 +45,28 @@
                         <tr>
                             <td>{{$clase->name}}</td>
                             <td>{{$clase->description}}</td>
-                            <td>
+                            <td class="text-center">
                                 <a href="{{$clase->instrucciones}}" class="btn btn-indigo btn-sm" width="40px"> 
-                                    <i class="fa fa-file-pdf"> Visualizar</i> 
+                                    <i class="fa fa-file-pdf"> {{$clase->nameinstru}}</i> 
                                 </a>
                             </td>
-                            <td>
-                                <a href="{{$clase->video}}" class="btn btn-indigo btn-sm"> 
-                                    <i class="fa fa-file-video"> Ver</i> 
-                                </a>
-                            </td>
-                            <td>
-                                <a href="{{$clase->presentacion}}" class="btn btn-indigo btn-sm"> 
+                            <td class="text-center">
+                                <a href="{{$clase->present}}" class="btn btn-indigo btn-sm"> 
                                     1-<i class="fa fa-file-powerpoint"></i> 
                                 </a>
-                                <a href="{{$clase->presentacion_2}}" class="btn btn-indigo btn-sm"> 
+                                <a href="{{$clase->present_2}}" class="btn btn-indigo btn-sm"> 
                                     2-<i class="fa fa-file-powerpoint"></i> 
                                 </a>
-                            </td>
+                            </td class="text-center">
                             <td>
-                                <a href="{{$clase->prezi}}" class="btn btn-indigo btn-sm"> 
+                                {{-- <a href="{{$clase->pdrive}}" class="btn btn-indigo btn-sm"> 
                                     1-<i class="fa fa-file-import"></i> 
                                 </a>
-                                <a href="{{$clase->prezi_2}}" class="btn btn-indigo btn-sm"> 
+                                <a href="{{$clase->pdrive_2}}" class="btn btn-indigo btn-sm"> 
                                     2-<i class="fa fa-file-import"></i> 
-                                </a>
+                                </a> --}}
                             </td>
-                            <td>
+                            <td class="text-center">
                                 <a href="{{$clase->formulario}}" class="btn btn-indigo btn-sm"> 
                                    1- <i class="fab fa-google-drive"></i> 
                                 </a>
@@ -73,7 +74,7 @@
                                     2- <i class="fab fa-google-drive"></i> 
                                  </a>
                             </td>
-                            <td>
+                            <td class="text-center">
                                 {{-- Boton de buscar --}}
                                 <a href="{{ url('clases/'.$clase->id) }}" class="btn btn-indigo btn-sm"> 
                                     <i class="fa fa-search"></i> 

@@ -4,27 +4,18 @@
 <div class="container">
     <div class="row">
         {{-- Inicio de formulario--**********************MUESTRA UN SOLO DATO******************}} 
-        <div class="col-md-8 offset-md-2">
-            <h1 class="h3">
-                <i class="fa fa-search"></i>
-                Consultar Articulos
-            </h1>
-            <hr>
+
             {{-- Menu Migajas de pan --}}
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{ url('home') }}">Inicio</a></li>
-                <li class="breadcrumb-item"><a href="{{ url('Clases') }}">Lista de Clases</a></li>
+                <li class="breadcrumb-item"><a href="{{ url('clases') }}">Lista de Clases</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Consultar Clase</li>
                 </ol>
             </nav>
+            
             {{-- Tabla --}}
             <table class="table table-striped table-bordered table-hover">
-                <tr>
-                    <td colspan="2" class="text-center">
-                    <img class="img-thumbnail" src="{{ asset($clase->image) }}" width="200px">
-                    </td>
-                </tr>
                 <tr>
                     <th>Nombre Clase:</th>
                     <td>{{ $clase->name}}</td>
@@ -39,7 +30,35 @@
                 </tr>
                 <tr>
                     <th>Curso:</th>
-                    <td>{{ $category->name}}</td>
+                    <td>{{ $curso->name}}</td>
+                </tr>
+                <tr>
+                    <th>Instrucciones:</th>
+                    <td>{{ $clase->instrucciones}}</td>
+                </tr>
+                <tr>
+                    <th>Presentaciín 1:</th>
+                    <td>{{ $clase->present}}</td>
+                </tr>
+                <tr>
+                    <th>Presentación 2:</th>
+                    <td>{{ $clase->present_2}}</td>
+                </tr>
+                <tr>
+                    <th>Presentación en Drive:</th>
+                    <td>{{ $clase->pdrive}}</td>
+                </tr>
+                <tr>
+                    <th>Presentación en Drive 2:</th>
+                    <td>{{ $clase->pdrive_2}}</td>
+                </tr>
+                <tr>
+                    <th>Formulario:</th>
+                    <td>{{ $clase->formulario}}</td>
+                </tr>
+                <tr>
+                    <th>Formulario 2:</th>
+                    <td>{{ $clase->formulario_2}}</td>
                 </tr>
             </table>
         

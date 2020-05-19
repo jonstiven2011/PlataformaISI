@@ -20,7 +20,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('editor', 'EditorController');
 
 Route::resource('/', 'WelcomeController');
-Route::post('loadcat', 'WelcomeController@loadcat');
 //loadcat es para cargar las categorias por un select
 
 //***************************USERS********************************************* */
@@ -44,9 +43,14 @@ Route::resource('cursos', 'CursoController');
 //Ruta de Cursos
 Route::resource('clases', 'ClaseController');
 
+// *****************************VIDEOS**********************************
+//Ruta de Cursos
+Route::resource('videos', 'VideoController');
+
 // *****************************EDITOR**********************************
 
 Route::get('mycurso', 'CursoController@mycurso');
+Route::get('myvideo', 'VideoController@index');
 //Route::put('mydata/{id}', 'UserController@updmydata');
 // Route::get('editor/index', 'ArticleController@index');
 // Route::get('editor/create', 'ArticleController@editorcreate');

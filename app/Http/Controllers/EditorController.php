@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Clase;
 use App\Curso;
 use App\User;
+use Auth;
 
 class EditorController extends Controller
 {
@@ -16,8 +17,9 @@ class EditorController extends Controller
      */
     public function index()
     {
+        $id = Auth::user()->id;
         $clases = Clase::paginate(10);
-        return view('editor.index')->with('clases',$clases);           
+        return view('editor.index')->with('clases',$clases); 
     }
     
     /**

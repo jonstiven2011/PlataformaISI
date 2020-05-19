@@ -10,13 +10,12 @@
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="{{ url('home') }}">Inicio</a></li>
-                    <li class="breadcrumb-item"><a href="{{ url('clases') }}">Mis Clases</a></li>
+                    <li class="breadcrumb-item"><a href="{{ url('editor') }}">Mis Clases</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Mis Cursos</li>
                 </ol>
             </nav>
-            
          {{-- Tabla --}}
-            <table class="table table-inverse table-striped table-bordered">
+            <table class="table table-inverse table-striped table-bordere table-responsive">
                 <thead>
                     <tr>
                         <th>Nombre Curso</th>
@@ -29,7 +28,7 @@
                         <tr>
                             <td>{{$curso->name}}</td>
                             <td>{{$curso->description}}</td>
-                            <td><img src="{{asset($curso->image)}}" width="40px"></td>
+                            <td><img src="{{asset($curso->image)}}" width="250px"></td>
                         </tr>
                     @endforeach
                 </tbody>

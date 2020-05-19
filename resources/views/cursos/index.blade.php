@@ -6,13 +6,21 @@
         <div class="col-md-12">
         {{-- Boton adicionar usuario --}}
         {{-- Color Azul Oscuro #01458E --}}
-                <a href="{{url('cursos/create')}}" class="btn btn-success">
-                    <i class="fa fa-plus"></i>
-                    Adicionar Curso
-                </a>
-                <br><br>
+            <a href="{{url('cursos/create')}}" class="btn btn-success">
+                <i class="fa fa-plus"></i>
+                Adicionar Curso
+            </a>
+            {{-- Menu Migajas de pan --}}
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{ url('home') }}">Inicio</a></li>
+                <li class="breadcrumb-item"><a href="{{ url('videos') }}">Lista de Videos</a></li>
+                <li class="breadcrumb-item"><a href="{{ url('clases') }}">Lista de Clases</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Lista de Cursos</li>
+                </ol>
+            </nav>
          {{-- Tabla --}}
-            <table class="table table-inverse table-striped table-bordered">
+            <table class="table table-inverse table-striped table-bordered table-responsive">
                 <thead>
                     <tr>
                         <th>Nombre Curso</th>

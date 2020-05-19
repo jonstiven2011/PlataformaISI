@@ -29,12 +29,13 @@ class ClaseController extends Controller
         {
             $clases = Clase::paginate(10);
             return view('clases.index')->with('clases',$clases);
-        }else
-        {
-            $id = Auth::user()->id;
-            $clases = Clase::where('user_id','=', $id)->paginate(10);
-            return view('editor.index')->with('clases',$clases);
         }
+        // else
+        // {
+        //     $id = Auth::user()->id;
+        //     $clases = Clase::where('user_id','=', $id)->paginate(10);
+        //     return view('clases.myclases')->with('clases',$clases);
+        // }
     }
 
     /**
@@ -62,37 +63,34 @@ class ClaseController extends Controller
         $clase = new Clase;
         $clase->name               = $request->name;
         $clase->description        = $request->description;
+        $clase->nameinstru         = $request->nameinstru;
         if($request->hasFile('instrucciones')){
             $file = time().'.'.$request->instrucciones->getClientOriginalName();
             $request->instrucciones->move(public_path('pdf'),$file);
             $clase->instrucciones = 'pdf/'.$file;
         }
-        $clase->user_id            = Auth::user()->id;
-        $clase->curso_id           = $request->curso;
-        if($request->hasFile('video')){
-            $file = time().'.'.$request->video->getClientOriginalName();
-            $request->video->move(public_path('mp4'),$file);
-            $clase->video = 'mp4/'.$file;
 
-            if($request->hasFile('presentacion')){
-                $file = time().'.'.$request->presentacion->getClientOriginalName();
-                $request->presentacion->move(public_path('presentaciones'),$file);
-                $clase->presentacion = 'presentaciones/'.$file;
+        if($request->hasFile('present')){
+            $file = time().'.'.$request->present->getClientOriginalName();
+            $request->present->move(public_path('presentaciones'),$file);
+            $clase->present = 'presentaciones/'.$file;
 
-                if($request->hasFile('presentacion_2')){
-                    $file = time().'.'.$request->presentacion_2->getClientOriginalName();
-                    $request->presentacion_2->move(public_path('presentaciones'),$file);
-                    $clase->presentacion_2 = 'presentaciones/'.$file;
-                }
+            if($request->hasFile('present_2')){
+                $file = time().'.'.$request->present_2->getClientOriginalName();
+                $request->present_2->move(public_path('presentaciones'),$file);
+                $clase->present_2 = 'presentaciones/'.$file;
             }
         }
-        $clase->prezi              = $request->prezi;
-        $clase->prezi_2            = $request->prezi_2;
+        
+        $clase->user_id            = Auth::user()->id;
+        $clase->curso_id           = $request->curso;       
+        $clase->pdrive             = $request->pdrive;
+        $clase->pdrive_2           = $request->pdrive_2;
         $clase->formulario         = $request->formulario;
         $clase->formulario_2       = $request->formulario_2;
         
         if($clase->save()){
-            return redirect('clases')->with('message', 'La Clase: '.$clase->name.' fue Adicionada con Exito!');
+            return redirect('clases')->with('message', 'La Clase: '.$clase->name.', fue Adicionada con Exito!');
         }
     }
 
@@ -141,39 +139,36 @@ class ClaseController extends Controller
         $clase =                   Clase::find($id);
         $clase->name               = $request->name;
         $clase->description        = $request->description;
+        $clase->nameinstru         = $request->nameinstru;
         if($request->hasFile('instrucciones')){
             $file = time().'.'.$request->instrucciones->getClientOriginalName();
             $request->instrucciones->move(public_path('pdf'),$file);
             $clase->instrucciones = 'pdf/'.$file;
         }
-        $clase->user_id            = Auth::user()->id;
-        $clase->curso_id           = $request->curso;
-        if($request->hasFile('video')){
-            $file = time().'.'.$request->video->getClientOriginalName();
-            $request->video->move(public_path('mp4'),$file);
-            $clase->video = 'mp4/'.$file;
 
-            if($request->hasFile('presentacion')){
-                $file = time().'.'.$request->presentacion->getClientOriginalName();
-                $request->presentacion->move(public_path('presentaciones'),$file);
-                $clase->presentacion = 'presentaciones/'.$file;
+        if($request->hasFile('present')){
+            $file = time().'.'.$request->present->getClientOriginalName();
+            $request->present->move(public_path('presentaciones'),$file);
+            $clase->present = 'presentaciones/'.$file;
 
-                if($request->hasFile('presentacion_2')){
-                    $file = time().'.'.$request->presentacion_2->getClientOriginalName();
-                    $request->presentacion_2->move(public_path('presentaciones'),$file);
-                    $clase->presentacion_2 = 'presentaciones/'.$file;
-                }
+            if($request->hasFile('present_2')){
+                $file = time().'.'.$request->present_2->getClientOriginalName();
+                $request->present_2->move(public_path('presentaciones'),$file);
+                $clase->present_2 = 'presentaciones/'.$file;
             }
         }
-        $clase->prezi              = $request->prezi;
-        $clase->prezi_2            = $request->prezi_2;
+        
+        $clase->user_id            = Auth::user()->id;
+        $clase->curso_id           = $request->curso;       
+        $clase->pdrive             = $request->pdrive;
+        $clase->pdrive_2           = $request->pdrive_2;
         $clase->formulario         = $request->formulario;
         $clase->formulario_2       = $request->formulario_2;
 
         if($clase->save()){
-            return redirect('clases')->with('message', 'La Clase: '.$clase->name.' fue Modificada con Exito!');
+            return redirect('clases')->with('message', 'La Clase: '.$clase->name.', fue Modificada con Exito!');
         }else{
-            return redirect('clases')->with('message', 'La clase: '.$clase->name.' No pudo ser modificada. Intentelo de nuevo');
+            return redirect('clases')->with('message', 'La clase: '.$clase->name.', No pudo ser modificada. Intentelo de nuevo');
         }
     
     }
@@ -188,17 +183,17 @@ class ClaseController extends Controller
     {
         $clase = Clase::find($id);
         if ($clase->delete()) {
-            return redirect('clases')->with('message', 'La Clase: '.$clase->name.' fue Eliminada con Exito!');
+            return redirect('clases')->with('message', 'La Clase: '.$clase->name.', fue Eliminada con Exito!');
         }
     }
 
     // ***********************************FUNCIONES DEL EDITOR************************
-    // Ruta de MyArticles
-    // public function myarticles()
+    // public function myclases()
     // {
-    //     $id = Auth::user()->id;
-    //     $articles = Article::where('user_id','=', $id)->paginate(10);
-    //     return view('articles.myarticles')->with('articles',$articles);
+    //     $id     = Auth::user()->id;
+    //     $clases = Clase::paginate(10);
+    //     return view('clases.myclases')->with('clases',$clases);
+    // }
 
     // }
     // public function editorcreate(){

@@ -203,7 +203,7 @@
             };
             reader.readAsDataURL(this.files[0]);
         });
-
+        //***************PDF INSTRUCCIONES*********************
         $('#instrucciones').change(function(e){
             var fileName = e.target.files[0].name;
             $("#file").val(fileName);
@@ -236,7 +236,7 @@
                 $('#video').click();
         });
         //*******************Codigo para seleccionar una presentacion y que aparezca en pantalla
-        $('#presentacion').change(function(e){
+        $('#present').change(function(e){
             var fileName = e.target.files[0].name;
             $("#file").val(fileName);
 
@@ -248,11 +248,11 @@
             reader.readAsDataURL(this.files[0]);
         });
         //Carga la presentacion de clase
-        $('.btn-uupload').click(function(event){
-                $('#presentacion').click();
+        $('.btn-uploadpresent').click(function(event){
+                $('#present').click();
         });
         //*******************Codigo para seleccionar una presentacion 2 y que aparezca en pantalla
-        $('#presentacion_2').change(function(e){
+        $('#present_2').change(function(e){
             var fileName = e.target.files[0].name;
             $("#file").val(fileName);
 
@@ -264,8 +264,8 @@
             reader.readAsDataURL(this.files[0]);
         });
         //Carga la presentacion 2 de clase
-        $('.btn-uppload').click(function(event){
-                $('#presentacion_2').click();
+        $('.btn-uploadpresent_2').click(function(event){
+                $('#present_2').click();
         });
         //----------------carga las categorias por medio de un select en el inicio-------------------
         $('body').on('change', '#catid', function(event) {
